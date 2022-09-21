@@ -20,7 +20,7 @@ class Login(tk.Tk):
 
                 first_label = tk.Label(self, text = ran_list, font=('Times', 15), fg='#4A7A8C')
                 first_label.pack(pady= 3, padx = 3)
-                img = PhotoImage(file='icon.png')
+                img = PhotoImage(file='icons/icon.png')
 
                 ver_button = tk.Button(self,image=img, compound = LEFT, text='access account', font=15, bg='#4a7abc',fg='yellow', activebackground='red', activeforeground='white', command=self.destroy)
                 #ver_button = tk.Button(self, image=img, command=self.destroy)
@@ -65,7 +65,7 @@ class Login(tk.Tk):
         
         #<----------------------------------------------------------------------------------------------------------->
         
-        check = PhotoImage(file ='protection.png')
+        check = PhotoImage(file ='icons/protection.png')
         check_img = check.subsample(20, 20)
         first_button = tk.Button(self,image = check, text ="Verify", compound = LEFT, command = verify)
         first_button.image = check
@@ -86,7 +86,7 @@ class Login(tk.Tk):
 
 
 
-        create_img = PhotoImage(file='icon.png')
+        create_img = PhotoImage(file='icons/icon.png')
         third_button = tk.Button(self,image = create_img, text="Create Account",compound = LEFT, font=15, command=create_acc)
         third_button.image = create_img
         third_button.pack(side = TOP)
