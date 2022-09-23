@@ -7,9 +7,10 @@ import random
 import time
 from ttkthemes import ThemedTk
 
-window = ThemedTk(theme="equilux")
+window = ThemedTk(theme="black")
 window.title('Login Window')
-window.configure(bg='grey')
+window.configure(bg='#424242')
+window.geometry("1920x1080")
 def destroy_1():
         first_button.destroy()
             
@@ -19,6 +20,22 @@ def destroy_1():
 
 def destroy_1_btn():
     third_button.destroy()
+
+
+
+def account():
+    ttk.Checkbutton(window, text ="Choose Me !").pack()
+    account_button1 = ttk.Button(window,text='Mathematik',  command=NONE)
+    account_button1.place(x = 200, y= 100, width=100)
+    account_button1 = ttk.Button(window,text='Deutsch',  command=NONE)
+    account_button1.place(x = 200, y= 130, width=100)
+    account_button1 = ttk.Button(window,text='Sport',  command=NONE)
+    account_button1.place(x = 200, y= 160, width=100)
+    account_button1 = ttk.Button(window,text='Ethik',  command=NONE)
+    account_button1.place(x = 200, y= 190, width=100)
+    account_button1 = ttk.Button(window,text='Englisch',  command=NONE)
+    account_button1.place(x = 200, y= 220, width=100)
+
 
 
 
@@ -46,27 +63,14 @@ def verify():
                 #ver_button.pack(pady= 8, padx = 6)
         ver_button.pack()
 
-def new_window():
+#def main_window():
+    win = ThemedTk(theme="blue")
+    win.title('Login ')
+    win.configure(bg='grey')
 
 
-        def Stundenplan():
-            print("W")
-                
+    win.mainloop()
 
-
-        window.geometry('1920x1080')
-        window.title("windowdow")
-
-        settings_menu = Menu(window)
-
-        Schule = Menu(settings_menu, tearoff=0)
-        settings_menu.add_cascade(label='Schule',menu= Schule)
-        Schule.add_command(label="Stundenplan",command = Stundenplan)
-        Schule.add_command(label="Notenspiegel",command = NONE)
-        Schule.add_command(label="Gruppenchat",command = NONE)
-        Schule.add_command(label="Notizen",command = NONE)
-        window.config(menu = settings_menu)
-        mainloop()
 def create_acc():
 
     def verify_reg():
@@ -90,8 +94,7 @@ def create_acc():
                     print("YES")
                     acc_label = ttk.Label(window, text = "Account created",)
                     acc_label.pack(pady= 3, padx = 3)
-                    acc_button = ttk.Button(window,image=img, compound = LEFT, text='Enter Account',  command=lambda: [destroy_2(), new_window()])
-                    acc_button.image = img
+                    acc_button = ttk.Button(window, text='Enter Account',  command=lambda: [destroy_2(), account()])
                     acc_button.pack()
                 
 
@@ -117,11 +120,9 @@ def create_acc():
     def destroy_btn1():
 
         create_button.destroy()
-    img = PhotoImage(file='icons/icon.png')
 
-    create_button = ttk.Button(window,image=img, compound = LEFT, text='Create Account', command  =lambda: [destroy_1_btn(), destroy_btn1(), verify_reg()])
+    create_button = ttk.Button(window,text='Create Account', command  =lambda: [destroy_1_btn(), destroy_btn1(), verify_reg()])
                 #create_button = tk.Button(window, image=img, command=window.destroy)
-    create_button.image = img
                 #create_button.pack(pady= 8, padx = 6)
     create_button.pack()
 
@@ -130,7 +131,7 @@ def create_acc():
 
         
     
-first_label = ttk.Label(window, text = "Verify with your digit code to access the app")
+first_label = ttk.Label(window, text = "Verify with your digit code to access the app",font=("Microsoft"))
 first_label.pack(pady= 2, padx = 2)
 
 
@@ -147,22 +148,22 @@ first_button.pack(side = TOP)
         
 first_entry = ttk.Entry(window, width = 4)
 first_entry.pack(padx = 7, pady = 10)
-ttk.Label(window, text = "Das ist ein Test").pack()
-
                 
         #<----------------------------------------------------------------------------------------------------------->
-logout_img = PhotoImage(file='icons/logout.png')
-second_button = ttk.Button(window,image = logout_img, text="Close window",compound = LEFT, command=window.destroy)
-second_button.image = logout_img
+second_button = ttk.Button(window,text="Close window", command=window.destroy)
 second_button.pack(side = TOP)
+second_button.place(x = 1500, y= 50, width=150)
+
         
         #<------------------------------------------------------------------------------------------------------------>
 
+img_label = PhotoImage(file='icons/background.png')
+imglabel = ttk.Label(image=img_label).place(x=50,y=50)
+#imglabel.pack()
 
 
-create_img = PhotoImage(file='icons/icon.png')
-third_button = ttk.Button(window,image = create_img, text="Create Account",compound = LEFT, command=lambda: [destroy_1(),destroy_1_btn(),create_acc()] )
-third_button.image = create_img
+#create_img = PhotoImage(file='icons/icon.png')
+third_button = ttk.Button(window, text="Create Account",command=lambda: [destroy_1(),destroy_1_btn(),create_acc()] )
 third_button.pack(side = TOP)
 
     
