@@ -7,6 +7,9 @@ from cgitb import text
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from ttkbootstrap.themes import *
+import os
+import sys 
+import sqlite3
 import socket
 
 class Window(tk.Tk):
@@ -71,6 +74,23 @@ class Window(tk.Tk):
         def Noten():
             print("s")
 
+
+            connection_obj = sqlite3.connect('noten.db')
+            
+            cursor_obj = connection_obj.cursor()
+
+            statement = '''SELECT * FROM DATA'''
+
+            cursor_obj.execute(statement)
+            output = cursor_obj.fetchall()
+            print(output)
+            labeltest = ttk.Label(self, text = output,bootstyle="success")
+            labeltest.pack(pady= 3, padx = 3)
+
+            connection_obj.commit()
+
+            connection_obj.close()
+
         def Notizen():
             print("")
 
@@ -100,7 +120,7 @@ class Window(tk.Tk):
             def profile1():
                 account_button1 = ttk.Button(self,text='Bewerbungen',  command=Bewerbungen)
                 account_button1.place(x = 200, y= 70, width=100)
-                account_button2 = ttk.Button(self,text='Noten',  command=NONE)
+                account_button2 = ttk.Button(self,text='Noten',  command=Noten)
                 account_button2.place(x = 200, y= 100, width=100)
                 account_button3 = ttk.Button(self,text='Notizen',  command=NONE)
                 account_button3.place(x = 200, y= 130, width=100)
