@@ -7,6 +7,7 @@ from cgitb import text
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from ttkbootstrap.themes import *
+import socket
 
 class Window(tk.Tk):
     def __init__(self):
@@ -17,9 +18,34 @@ class Window(tk.Tk):
         self.configure(bg='#424242')
         self.geometry("1920x1080")
 
+        style = Style()
+
+        # instantiate the style with another theme
+        style = ttk.Style(theme='vapor')
+
 
         Labelframe1 = ttk.LabelFrame(padding=10, width= 700,bootstyle="primary")
         Labelframe1.pack(ipadx=10, ipady=20, expand= False, fill= BOTH)
+
+
+        def connect_server():
+            HOST = 'IP'
+            PORT = PORT
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sock.connect((HOST, PORT))
+            except Exception as e:
+                print("Cannot connect to the server:", e)
+            print("Connected")
+            connect_button.destroy()
+            connect_label1 = ttk.Label(Labelframe1,text = 'Connected',bootstyle="success")
+            connect_label1.pack(pady= 3, padx = 3)
+
+
+
+        connect_button = ttk.Checkbutton(bootstyle="info",text="Connect to Server", command=lambda: [connect_server()])
+        connect_button.pack(side = TOP)
+        connect_button.place(x = 1200, y= 50, width=100)
 
 
 
@@ -69,33 +95,33 @@ class Window(tk.Tk):
         def gui1():
 
 
-                account_button6 = ttk.Button(self,text='Account',bootstyle="warning-outline",  command=profile1)
-                account_button6.place(x = 100, y= 40, width=100)
-                account_button7 = ttk.Button(self,text='Settings',bootstyle="warning-outline",  command=Settings)
-                account_button7.place(x = 100, y= 10, width=100)
+
+
+            def profile1():
+                account_button1 = ttk.Button(self,text='Bewerbungen',  command=Bewerbungen)
+                account_button1.place(x = 200, y= 70, width=100)
+                account_button2 = ttk.Button(self,text='Noten',  command=NONE)
+                account_button2.place(x = 200, y= 100, width=100)
+                account_button3 = ttk.Button(self,text='Notizen',  command=NONE)
+                account_button3.place(x = 200, y= 130, width=100)
+                account_button4 = ttk.Button(self,text='Kontakte',  command=NONE)
+                account_button4.place(x = 200, y= 160, width=100)
+                account_button5 = ttk.Button(self,text='bearbeiten',  command=NONE)
+                account_button5.place(x = 200, y= 190, width=100)
+
+            account_button6 = ttk.Button(self,text='Account',bootstyle="warning-outline",  command=profile1)
+            account_button6.place(x = 100, y= 40, width=100)
+            account_button7 = ttk.Button(self,text='Settings',bootstyle="warning-outline",  command=Settings)
+            account_button7.place(x = 100, y= 10, width=100)
 
 
 
-        def profile1():
-            account_button1 = ttk.Button(self,text='Bewerbungen',  command=Bewerbungen)
-            account_button1.place(x = 200, y= 70, width=100)
-            account_button2 = ttk.Button(self,text='Noten',  command=NONE)
-            account_button2.place(x = 200, y= 100, width=100)
-            account_button3 = ttk.Button(self,text='Notizen',  command=NONE)
-            account_button3.place(x = 200, y= 130, width=100)
-            account_button4 = ttk.Button(self,text='Kontakte',  command=NONE)
-            account_button4.place(x = 200, y= 160, width=100)
-            account_button5 = ttk.Button(self,text='bearbeiten',  command=NONE)
-            account_button5.place(x = 200, y= 190, width=100)
-
-
-
-        def suche():
+        # def suche():
 
             search_entry1 = ttk.Entry(Labelframe1, width = 20,bootstyle="primary")
             search_entry1.pack(padx = 7, pady = 10)
 
-            search_btn1 = ttk.Button(self,text='Finden',bootstyle="warning-outline",  command=Settings)
+            search_btn1 = ttk.Button(self,text='Finden',bootstyle="warning-outline",   command=lambda: [gui1()])
             search_btn1.place(x = 1030, y= 35, width=70)
 
 
@@ -142,9 +168,9 @@ class Window(tk.Tk):
 
                 
                             print("YES")
-                            acc_label = ttk.Label(self, text = "Account created",)
+                            acc_label = ttk.Label(self, text = "Account created",bootstyle="success")
                             acc_label.pack(pady= 3, padx = 3)
-                            acc_button = ttk.Button(self, text='Enter Account',  command=lambda: [destroy_2(),delete_labelframe1 ,gui1(),suche()])
+                            acc_button = ttk.Button(self, text='Enter Account',  command=lambda: [destroy_2(),delete_labelframe1 ,gui1()])
                             acc_button.pack()
                         
 
@@ -195,6 +221,8 @@ class Window(tk.Tk):
         second_button = ttk.Button(self,text="Close Window", command=self.destroy)
         second_button.pack(side = TOP)
         second_button.place(x = 1300, y= 20, width=100)
+
+
 
 
                 
