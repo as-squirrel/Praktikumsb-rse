@@ -14,7 +14,7 @@ class Window(tk.Tk):
         tk.Tk.__init__(self)
 
         self.title('Login self')
-        self.configure(bg='#424242')
+        self.configure(bg='#49998647')
         self.geometry("1920x1080")
 
 
