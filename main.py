@@ -184,7 +184,7 @@ class Window(tk.Tk):
                 acc2 = createacc2.get()
                     
 
-                if  "admin" in acc1 and "admin" in acc2:
+                if  "root" in acc1 and "root" in acc2:
 
                 
                             print("YES")
